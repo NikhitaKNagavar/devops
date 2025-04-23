@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adder-deployment
+spec:
+  replicas: 1 # This defines the number of instances of your container
+  selector:
+    matchLabels:
+      app: adder
+  template:
+    metadata:
+      labels:
+        app: adder
+    spec:
+      containers:
+        - name: adder
+          image: nikhitaknagavar/adder:latest # Docker Hub image
+          imagePullPolicy: Always # Ensure Kubernetes always pulls the latest image
